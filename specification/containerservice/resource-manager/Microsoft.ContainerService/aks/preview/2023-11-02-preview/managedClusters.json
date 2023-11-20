@@ -5091,6 +5091,83 @@
       "title": "A time range.",
       "description": "For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z."
     },
+    "ScheduledEvent": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "The description of a scheduled event."
+        },
+        "eventId": {
+          "type": "string",
+          "description": "The event id of a scheduled event."
+        },
+        "eventSource": {
+          "type": "string",
+          "description": "The source of a scheduled event."
+        },
+        "eventStatus": {
+          "type": "string",
+          "enum": [
+            "Scheduled",
+            "Started",
+            "Completed",
+            "Cancelled",
+            "Failed"
+          ],
+          "x-ms-enum": {
+            "name": "eventStatus",
+            "modelAsString": true
+          },
+          "description": "The status of a scheduled event."
+        },
+        "scheduledTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time of a scheduled event."
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time of a scheduled event starts."
+        },
+        "lastUpdateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time of a scheduled event last updates."
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "arm-id",
+            "x-ms-arm-id-details": {
+              "allowedResources": [
+                {
+                  "type": "Microsoft.ContainerService/managedClusters"
+                },
+                {
+                  "type": "Microsoft.ContainerService/managedClusters/agentPools"
+                }
+              ]
+            }
+          },
+          "description": "The list of resources of a scheduled event."
+        },
+        "resourceType": {
+          "type": "string",
+          "enum": [
+            "ManagedCluster",
+            "AgentPool"
+          ],
+          "x-ms-enum": {
+            "name": "resourceType",
+            "modelAsString": true
+          },
+          "description": "The resource type of a scheduled event."
+        }
+      }
+    },
     "RunCommandRequest": {
       "type": "object",
       "properties": {
